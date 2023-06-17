@@ -32,6 +32,7 @@
         </div>
       </div>
       <mat-paginator
+        *ngIf="employeesArray.length"
         [length]="employeesArray.length"
         [pageSize]="pageSize"
         [pageIndex]="pageIndex"
