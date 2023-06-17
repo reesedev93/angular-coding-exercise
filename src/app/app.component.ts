@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 
 import { EmployeeFacade } from 'src/store/facades/employee.facade';
+import { DEFAULT_PAGE_SIZE, PAGE_SIZE_OPTIONS } from './constants/pagination.constant';
 
 @Component({
   selector: 'reese-dev-root',
@@ -11,8 +11,12 @@ import { EmployeeFacade } from 'src/store/facades/employee.facade';
 export class AppComponent implements OnInit {
 
   selectedDepartment = 'All Departments';
+  pageSize = DEFAULT_PAGE_SIZE;
+  pageSizeOptions = PAGE_SIZE_OPTIONS;
+  pageIndex = 0;
   departments$ = this.employeeFacade.departments$;
   employees$ = this.employeeFacade.employees$;
+
 
   constructor(
     private readonly employeeFacade: EmployeeFacade
@@ -24,6 +28,12 @@ export class AppComponent implements OnInit {
   }
 
   filterByDepartment(event: any) {
-    this.employeeFacade.setDepartmentFilter(event.value)
+    this.employeeFacade.setDepartmentFilter(event.value);
+    this.pageIndex = 0;
+  }
+
+  handlePageEvent(e: any) {
+    this.pageSize = e.pageSize;
+    this.pageIndex = e.pageIndex;
   }
 }

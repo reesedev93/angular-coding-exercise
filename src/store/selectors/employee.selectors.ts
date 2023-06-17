@@ -17,5 +17,5 @@ export const selectEmployees = createSelector(
     } else {
       return employee.department === state.departmentFilter
     }
-  })
+  }).sort((a, b) => new Date(b.dateOfHire).getTime() - new Date(a.dateOfHire).getTime())
 );

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { EmployeeService } from 'src/services/employee.service';
 import * as EmployeeActions from '../actions/employee.actions';
@@ -11,6 +12,7 @@ import { Employee } from 'src/interfaces/employee.model';
 export class EmployeeEffects {
 	constructor(
 		private readonly emplyeeService: EmployeeService,
+    private readonly snackbar: MatSnackBar,
     private actions$: Actions
 	) {}
 
@@ -44,6 +46,27 @@ export class EmployeeEffects {
         )
       )
     )
+  );
+
+  failure$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(
+        EmployeeActions.LoadDepartmentsFailure,
+        EmployeeActions.LoadEmployeesFailure
+      ),
+      tap(({ error }) =>
+        this.snackbar.open(
+          error,
+          '',
+          {
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+            duration: 2000
+          }
+        )
+      )
+    ),
+    { dispatch: false }
   );
 
 }

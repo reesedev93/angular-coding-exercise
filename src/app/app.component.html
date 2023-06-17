@@ -6,7 +6,10 @@
         <mat-label>
           Departments
         </mat-label>
-        <mat-select [(value)]="selectedDepartment" (selectionChange)="filterByDepartment($event)">
+        <mat-select
+          [(value)]="selectedDepartment"
+          (selectionChange)="filterByDepartment($event)"
+        >
           <mat-option
             value="All Departments"
           >
@@ -21,11 +24,22 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="employees-list">
-      <div *ngFor="let employee of employees$ | async">
-        <reese-dev-employee-card [employee]="employee">
-        </reese-dev-employee-card>
+    <ng-container *ngIf="(employees$ | async) as employeesArray">
+      <div class="employees-list">
+        <div *ngFor="let employee of employeesArray | pagination: pageIndex : pageSize">
+          <reese-dev-employee-card [employee]="employee">
+          </reese-dev-employee-card>
+        </div>
       </div>
-    </div>
+      <mat-paginator
+        [length]="employeesArray.length"
+        [pageSize]="pageSize"
+        [pageIndex]="pageIndex"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="handlePageEvent($event)"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </ng-container>
   </div>
 </div>
