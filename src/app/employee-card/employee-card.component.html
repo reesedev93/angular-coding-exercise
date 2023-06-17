@@ -1,0 +1,17 @@
+<mat-card class="employee-card">
+  <mat-card-content class="content">
+    <img
+      mat-card-image
+      class="employee-avatar"
+      [src]="employee.avatar"
+      alt="Photo of a Employee"
+    >
+    <div class="info">
+      <span class="name">{{employee.firstName}} {{employee.lastName}}</span>
+      <span class="position">{{employee.position}}</span>
+      <span class="details">
+        <span [outerHTML]="employee | EmployeeMoreInfoPipe"></span>
+      </span>
+    </div>
+  </mat-card-content>
+</mat-card>

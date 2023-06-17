@@ -1,0 +1,31 @@
+<div class="app">
+  <div>
+    <div class="header">
+      <span>Employees</span>
+      <mat-form-field>
+        <mat-label>
+          Departments
+        </mat-label>
+        <mat-select [(value)]="selectedDepartment" (selectionChange)="filterByDepartment($event)">
+          <mat-option
+            value="All Departments"
+          >
+            All Departments
+          </mat-option>
+          <mat-option
+            *ngFor="let department of departments$ | async"
+            [value]="department"
+          >
+            {{ department }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="employees-list">
+      <div *ngFor="let employee of employees$ | async">
+        <reese-dev-employee-card [employee]="employee">
+        </reese-dev-employee-card>
+      </div>
+    </div>
+  </div>
+</div>

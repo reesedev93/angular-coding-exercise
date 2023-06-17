@@ -1,0 +1,36 @@
+.employee-card {
+  width: 540px;
+  .content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 8px;
+
+    .employee-avatar {
+      height: 200px;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 24px;
+
+      span {
+        padding: 4px;
+      }
+
+      .name {
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      .position {
+        color: grey;
+      }
+
+      .details {
+        display: flex;
+      }
+    }
+  }
+}
