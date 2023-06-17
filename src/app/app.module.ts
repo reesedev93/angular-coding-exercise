@@ -17,14 +17,14 @@ import { EmployeeService } from 'src/services/employee.service';
 import { employeeReducers } from 'src/store/reducers/employee.reducers';
 import { EmployeeEffects } from 'src/store/effects/employee.effects';
 import { EmployeeCardComponent } from './employee-card/employee-card.component';
-import { EmployeeMoreInfoPipe } from './employee-card/employee-status-pipe/employee-more-info.pipe';
+import { MoreEmployeeInfoPipe } from './employee-card/more-employee-pipe/more-employee-info.pipe';
 import { PaginationPipe } from './pagination-pipe/pagination.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeCardComponent,
-    EmployeeMoreInfoPipe,
+    MoreEmployeeInfoPipe,
     PaginationPipe
   ],
   imports: [

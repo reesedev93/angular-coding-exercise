@@ -4,7 +4,7 @@ import { Employee } from 'src/interfaces/employee.model';
 @Pipe({
   name: 'moreEmployeeInfo'
 })
-export class EmployeeMoreInfoPipe implements PipeTransform {
+export class MoreEmployeeInfoPipe implements PipeTransform {
   transform(employee: Employee): string {
     const departmentElement = `<span class="more-info">${employee.department}</span>`;
     const marriedStatusElement = employee.married ? '<span class="more-info">Married</span>' : '';
