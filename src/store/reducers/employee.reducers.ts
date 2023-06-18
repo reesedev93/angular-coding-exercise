@@ -8,7 +8,8 @@ export const employeeReducers = createReducer(
   on(EmployeeActions.LoadEmployees, (state) => {
     return {
       ...state,
-      employees: []
+      employees: [],
+      error: null
     }
   }),
   on(EmployeeActions.LoadEmployeesSuccess, (state, { employees }) => {
@@ -26,7 +27,8 @@ export const employeeReducers = createReducer(
   on(EmployeeActions.LoadDepartments, (state) => {
     return {
       ...state,
-      departments: []
+      departments: [],
+      error: null
     }
   }),
   on(EmployeeActions.LoadDepartmentsSuccess, (state, { departments }) => {
