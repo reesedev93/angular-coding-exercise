@@ -1,6 +1,5 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { EmployeesState } from '../employees.state';
-import { selectDepartments, selectEmployees } from './employee.selectors';
+import { selectDepartments, selectEmployees, selectLoading } from './employee.selectors';
 import { departmentsMock, employeesMock } from 'src/mock/employee.mock';
 
 describe('Employees Selectors', () => {
@@ -11,6 +10,7 @@ describe('Employees Selectors', () => {
       departments: departmentsMock,
       employees: employeesMock,
       departmentFilter: '',
+      loading: false,
       error: null
     };
   });
@@ -33,5 +33,10 @@ describe('Employees Selectors', () => {
     });
     const executiveEmployees = employeesMock.filter(emp => emp.department === 'Executives')
     expect(result).toEqual(executiveEmployees);
+  });
+
+  it('should select loading status', () => {
+    const result = selectLoading.projector(mockAppState);
+    expect(result).toEqual(false);
   });
 });

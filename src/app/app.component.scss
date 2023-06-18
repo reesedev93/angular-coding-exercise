@@ -1,6 +1,5 @@
 .app {
   display: flex;
-  align-items: center;
   justify-content: center;
   padding: 24px;
   min-height: 800px;
@@ -19,5 +18,9 @@
     grid-row-gap: 24px;
     grid-column-gap: 48px;
     width: 1200px;
+  }
+
+  .loading {
+    align-self: center;
   }
 }
