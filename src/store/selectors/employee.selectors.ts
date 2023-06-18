@@ -19,3 +19,8 @@ export const selectEmployees = createSelector(
     }
   }).sort((a, b) => new Date(b.dateOfHire).getTime() - new Date(a.dateOfHire).getTime())
 );
+
+export const selectLoading = createSelector(
+  selectAppState,
+  (state: EmployeesState) => state.loading
+);

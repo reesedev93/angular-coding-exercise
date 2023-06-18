@@ -9,18 +9,21 @@ export const employeeReducers = createReducer(
     return {
       ...state,
       employees: [],
+      loading: true,
       error: null
     }
   }),
   on(EmployeeActions.LoadEmployeesSuccess, (state, { employees }) => {
     return {
       ...state,
-      employees
+      employees,
+      loading: false,
     }
   }),
   on(EmployeeActions.LoadEmployeesFailure, (state, { error }) => {
     return {
       ...state,
+      loading: false,
       error
     }
   }),
@@ -28,19 +31,22 @@ export const employeeReducers = createReducer(
     return {
       ...state,
       departments: [],
+      loading: true,
       error: null
     }
   }),
   on(EmployeeActions.LoadDepartmentsSuccess, (state, { departments }) => {
     return {
       ...state,
-      departments
+      departments,
+      loading: false,
     }
   }),
   on(EmployeeActions.LoadDepartmentsFailure, (state, { error }) => {
     return {
       ...state,
-      error
+      error,
+      loading: false,
     }
   }),
   on(EmployeeActions.SetDepartmentFilter, (state, { department }) => {

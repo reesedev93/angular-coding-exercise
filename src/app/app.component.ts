@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   pageIndex = 0;
   departments$ = this.employeeFacade.departments$;
   employees$ = this.employeeFacade.employees$;
+  loading$ = this.employeeFacade.loading$;
 
 
   constructor(

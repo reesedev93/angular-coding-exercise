@@ -1,5 +1,5 @@
 <div class="app">
-  <div>
+  <div *ngIf="!(loading$ | async); else loadingBlock">
     <div class="header">
       <span>Employees</span>
       <mat-form-field>
@@ -43,4 +43,7 @@
       </mat-paginator>
     </ng-container>
   </div>
+  <ng-template #loadingBlock>
+    <mat-spinner></mat-spinner>
+  </ng-template>
 </div>
